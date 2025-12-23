@@ -67,31 +67,71 @@
 //     println!("{}",user.age);
 // }
 
-struct Rect {
-    width: i32,
-    height: i32,
-}
+//5
 
-impl Rect{
-    fn area(&self)-> i32{
-        self.width * self.height
-    }
+// struct Rect {
+//     width: i32,
+//     height: i32,
+// }
 
-    fn perimeter(&self, num: i32) -> i32{
-        2 * (self.width * self.height)
-    }
+// impl Rect{
+//     fn area(&self)-> i32{
+//         self.width * self.height
+//     }
 
-    fn debug() -> i32 {
-        return 1;
-    }
+//     fn perimeter(&self, num: i32) -> i32{
+//         2 * (self.width * self.height)
+//     }
+
+//     fn debug() -> i32 {
+//         return 1;
+//     }
+// }
+
+// fn main(){
+//     let rect1 = Rect{
+//         width : 10,
+//         height: 20,
+//     };
+//     println!("area is {}",rect1.area());
+//     println!("perimeter is {}",rect1.perimeter(1));
+//     println!("debug is {}",Rect::debug())
+// }
+
+//6.1
+
+// enum Shape{
+//     Rectangle,
+//     Circle,
+// }
+
+// fn main(){
+//     let my_shape= Shape::Rectangle;
+//     print_area(my_shape);
+// }
+
+// fn print_area(shape:Shape){
+//     println!("hi there");
+// }
+
+//6.2
+
+enum Shape{
+    Rectangle(f64,f64),
+    Circle(f64),
 }
 
 fn main(){
-    let rect1 = Rect{
-        width : 10,
-        height: 20,
+    let rect = Shape::Rectangle(1.0, 2.0);
+    calculate_area(rect);
+    let cicle = Shape::Circle(1.0);
+    calculate_area(cicle);
+}
+
+fn calculate_area(shape:Shape)-> f64{
+    let area = match shape{
+        Shape::Rectangle(a,b )=> a*b,
+        Shape::Circle(r)=> 3.14*r*r,
     };
-    println!("area is {}",rect1.area());
-    println!("perimeter is {}",rect1.perimeter(1));
-    println!("debug is {}",Rect::debug())
+    return area;
 }
