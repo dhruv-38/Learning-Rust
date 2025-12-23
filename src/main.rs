@@ -40,12 +40,29 @@
 
 //3
 
-fn main(){
-    let my_string= String::from("Hello world!");
-    let length =get_string_length(&my_string);
-    println!("The number of characters in the stirng is {}",length);
+// fn main(){
+//     let my_string= String::from("Hello world!");
+//     let length =get_string_length(&my_string);
+//     println!("The number of characters in the stirng is {}",length);
+// }
+
+// fn get_string_length(s:&str)->usize{
+//     s.chars().count()
+// }
+
+//4
+
+struct User{
+    first_name:String,
+    last_name:String,
+    age: u16,
 }
 
-fn get_string_length(s:&str)->usize{
-    s.chars().count()
+fn main(){
+    let user =User{
+        first_name: String::from("Dhruv"),
+        last_name:String::from("Choudhary"),
+        age: 20,
+    };
+    println!("{}",user.age);
 }
