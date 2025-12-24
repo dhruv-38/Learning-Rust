@@ -187,11 +187,32 @@
 
 //10 Ownership
 
+// fn main(){
+//     let mut s1=String::from("dhruv");
+//     let s2 =&mut s1;
+//     s2.push_str(" choudhary");
+//     let s3 =&mut s1; //cannot have 2 mutable reference
+//     let s4=&s1; //cannot have read only reference when there is one mutable reference
+//     println!("string is {}",s1);
+// }
+
+// 11 Collections
+
+//Vector
 fn main(){
-    let mut s1=String::from("dhruv");
-    let s2 =&mut s1;
-    s2.push_str(" choudhary");
-    let s3 =&mut s1; //cannot have 2 mutable reference
-    let s4=&s1; //cannot have read only reference when there is one mutable reference
-    println!("string is {}",s1);
+    let mut vec= Vec::new();
+    vec.push(1);
+    vec.push(2);
+
+    println!("{:?}",even_filters(vec));
+}
+
+fn even_filters(vec: Vec<i32>) -> Vec<i32>{
+    let mut new_vec= Vec::new();
+    for val in vec{
+        if val % 2 ==0{
+            new_vec.push(val);
+        }
+    }
+    return new_vec;
 }
