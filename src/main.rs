@@ -188,11 +188,10 @@
 //10 Ownership
 
 fn main(){
-    let s1=String::from("dhruv");
-    do_something(&s1);
+    let mut s1=String::from("dhruv");
+    let s2 =&mut s1;
+    s2.push_str(" choudhary");
+    let s3 =&mut s1; //cannot have 2 mutable reference
+    let s4=&s1; //cannot have read only reference when there is one mutable reference
     println!("string is {}",s1);
-}
-
-fn do_something(s3:&String){
-    println!("{}",s3);
 }
