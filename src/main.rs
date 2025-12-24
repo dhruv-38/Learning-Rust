@@ -199,22 +199,37 @@
 // 11 Collections
 
 //Vector
-fn main(){
-    let mut vec= Vec::new();
-    vec.push(1);
-    vec.push(2);
+// fn main(){
+//     let mut vec= Vec::new();
+//     vec.push(1);
+//     vec.push(2);
     
-    let vec2= vec![1,2,3,4];// aslo way to initialise a vector using a macro
+//     let vec2= vec![1,2,3,4];// aslo way to initialise a vector using a macro
 
-    println!("{:?}",even_filters(vec));
-}
+//     println!("{:?}",even_filters(vec));
+// }
 
-fn even_filters(vec: Vec<i32>) -> Vec<i32>{
-    let mut new_vec= Vec::new();
-    for val in vec{
-        if val % 2 ==0{
-            new_vec.push(val);
-        }
+// fn even_filters(vec: Vec<i32>) -> Vec<i32>{
+//     let mut new_vec= Vec::new();
+//     for val in vec{
+//         if val % 2 ==0{
+//             new_vec.push(val);
+//         }
+//     }
+//     return new_vec;
+// }
+
+//Hashmaps
+use std::collections::HashMap;
+fn main (){
+    let mut users= HashMap::new();
+    users.insert(String::from("dhruv"), 20);
+    users.insert(String::from("raman"),22);
+
+    let first_user= users.get("dhruv");
+
+    match first_user {
+        Some(age)=> println!("age is {}", age),
+        None=> println!("User not found in the db")
     }
-    return new_vec;
 }
