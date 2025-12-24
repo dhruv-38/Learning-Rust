@@ -220,16 +220,53 @@
 // }
 
 //Hashmaps
-use std::collections::HashMap;
-fn main (){
-    let mut users= HashMap::new();
-    users.insert(String::from("dhruv"), 20);
-    users.insert(String::from("raman"),22);
+// use std::collections::HashMap;
+// fn main (){
+//     let mut users= HashMap::new();
+//     users.insert(String::from("dhruv"), 20);
+//     users.insert(String::from("raman"),22);
 
-    let first_user= users.get("dhruv");
+//     let first_user= users.get("dhruv");
 
-    match first_user {
-        Some(age)=> println!("age is {}", age),
-        None=> println!("User not found in the db")
+//     match first_user {
+//         Some(age)=> println!("age is {}", age),
+//         None=> println!("User not found in the db")
+//     }
+// }
+
+//12
+
+//Iterators
+
+fn main(){
+    let nums= vec![1,2,3];
+    let v1_iter= nums.iter();
+
+    for val in v1_iter{
+        println!("Got:{}",val);
     }
+
+    let mut v1=vec![1,2,3];
+    let v1_iter= v1.iter_mut();
+
+    for val in v1_iter{
+        *val= *val+1;
+    }
+
+    println!("{:?}",v1);
+
+    let mut v_iter=v1.iter_mut();
+
+    while let Some(val)=v_iter.next(){
+        println!("{}",val);
+    }
+
+    let nums1= vec![1,2,3];
+    let v2_iter= nums1.into_iter();
+
+    for val in v2_iter{
+        println!("Got:{}",val);
+    }
+
+    
 }
