@@ -239,34 +239,35 @@
 //Iterators
 
 fn main(){
+    //consume adaptor
     let nums= vec![1,2,3];
     let v1_iter= nums.iter();
 
-    for val in v1_iter{
-        println!("Got:{}",val);
-    }
+    let sum: i32 = v1_iter.sum();
 
-    let mut v1=vec![1,2,3];
-    let v1_iter= v1.iter_mut();
+    println!("{}",sum);
 
-    for val in v1_iter{
-        *val= *val+1;
+    //Iterator adaptors
+
+    let v1= vec![1,2,3];
+    let v11_iter= v1.iter();
+
+    // let v11_iter2 = v11_iter.map(|x| x+1);
+
+    // for i in v11_iter2{
+    //     println!("{}",i);
+    // }
+
+    // println!("{:?}",v1);
+
+    let v12_iter2=v11_iter.filter(|x| *x % 2==0);
+
+    for i in v12_iter2{
+        println!("{}",i);
     }
 
     println!("{:?}",v1);
 
-    let mut v_iter=v1.iter_mut();
-
-    while let Some(val)=v_iter.next(){
-        println!("{}",val);
-    }
-
-    let nums1= vec![1,2,3];
-    let v2_iter= nums1.into_iter();
-
-    for val in v2_iter{
-        println!("Got:{}",val);
-    }
-
+    // alos let v = iter.collect(); to convert from iterator to the vector
     
 }
