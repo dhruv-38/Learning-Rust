@@ -203,6 +203,8 @@ fn main(){
     let mut vec= Vec::new();
     vec.push(1);
     vec.push(2);
+    
+    let vec2= vec![1,2,3,4];// aslo way to initialise a vector using a macro
 
     println!("{:?}",even_filters(vec));
 }
