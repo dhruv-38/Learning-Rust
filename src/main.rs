@@ -184,3 +184,11 @@
 //     let now= Local::now();
 //     print!("current time is {}",now);
 // }
+
+//10 Ownership
+
+fn main(){
+    let s1=String::from("dhruv");
+    let s2=s1;
+    println!("string is {}",s1);
+}
