@@ -190,5 +190,10 @@
 fn main(){
     let s1=String::from("dhruv");
     let s2=s1.clone();
+    do_something(s1);
     println!("string is {}",s1);
+}
+
+fn do_something(s3:String){
+    println!("{}",s3);
 }
