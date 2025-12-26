@@ -238,36 +238,45 @@
 
 //Iterators
 
-fn main(){
-    //consume adaptor
-    let nums= vec![1,2,3];
-    let v1_iter= nums.iter();
+// fn main(){
+//     //consume adaptor
+//     let nums= vec![1,2,3];
+//     let v1_iter= nums.iter();
 
-    let sum: i32 = v1_iter.sum();
+//     let sum: i32 = v1_iter.sum();
 
-    println!("{}",sum);
+//     println!("{}",sum);
 
-    //Iterator adaptors
+//     //Iterator adaptors
 
-    let v1= vec![1,2,3];
-    let v11_iter= v1.iter();
+//     let v1= vec![1,2,3];
+//     let v11_iter= v1.iter();
 
-    // let v11_iter2 = v11_iter.map(|x| x+1);
+//     // let v11_iter2 = v11_iter.map(|x| x+1);
 
-    // for i in v11_iter2{
-    //     println!("{}",i);
-    // }
+//     // for i in v11_iter2{
+//     //     println!("{}",i);
+//     // }
 
-    // println!("{:?}",v1);
+//     // println!("{:?}",v1);
 
-    let v12_iter2=v11_iter.filter(|x| *x % 2==0);
+//     let v12_iter2=v11_iter.filter(|x| *x % 2==0);
 
-    for i in v12_iter2{
-        println!("{}",i);
-    }
+//     for i in v12_iter2{
+//         println!("{}",i);
+//     }
 
-    println!("{:?}",v1);
+//     println!("{:?}",v1);
 
-    // alos let v = iter.collect(); to convert from iterator to the vector
+//     // alos let v = iter.collect(); to convert from iterator to the vector
     
+// }
+
+
+//13 slices
+
+fn main(){
+    let name=String::from("Dhruv Choudhary");
+    let name2=&name[0..5];
+    println!("{}",name2);
 }
