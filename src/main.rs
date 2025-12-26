@@ -301,27 +301,51 @@
 
 
 //15 Traits
-pub trait Summary {
-    fn summarize(&self) -> String;
-}
 
-struct User {
-    name: String,
-    age: u32,
-}
+// pub trait Summary {
+//     fn summarize(&self) -> String;
+// }
 
-impl Summary for User {
-    fn summarize(&self) -> String {
-        return format!("The name of user is {} and age is {}", self.name, self.age);
-    }
-}
+// struct User {
+//     name: String,
+//     age: u32,
+// }
+
+// impl Summary for User {
+//     fn summarize(&self) -> String {
+//         return format!("The name of user is {} and age is {}", self.name, self.age);
+//     }
+// }
+
+// fn main() {
+//     let user = User {
+//         name: String::from("Dhruv"),
+//         age: 20,
+//     };
+
+//     println!("{}", user.summarize());
+// }
+
+//16 Lifetimes
 
 fn main() {
-    let user = User {
-        name: String::from("Dhruv"),
-        age: 20,
-    };
+    let ans;
 
-    println!("{}", user.summarize());
+    let str1 = String::from("small");
+    {
+        let str2 = String::from("longer");
+
+        ans = longest(&str1, &str2);
+    }
+
+    println!("{}", ans);
+}
+
+fn longest<'a>(str1: &'a str, str2: &'a str) -> &'a str {
+    if str1.len() > str2.len() {
+        return str1;
+    } else {
+        return str2;
+    }
 }
 
