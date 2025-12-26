@@ -351,37 +351,67 @@
 
 //17 Multithreading
 
-use std::thread;
+// use std::thread;
+
+// fn main() {
+//     thread::spawn(|| {
+//         let mut c = 0;
+//         for i in 0..500000000 {
+//             for j in 0..500000000 {
+//                 c = c + 1;
+//                 c = c - 1;
+//                 println!("ok from {}", i);
+//             }
+//         }
+//     });
+
+//     thread::spawn(|| {
+//         let mut c = 0;
+//         for i in 0..500000000 {
+//             for j in 0..500000000 {
+//                 c = c + 1;
+//                 c = c - 1;
+//                 println!("hello from spawned thread {}", i);
+//             }
+//         }
+//     });
+
+//     let mut c = 0;
+//     for i in 0..500000000 {
+//         for j in 0..500000000 {
+//             c = c + 1;
+//             c = c - 1;
+//             println!("hi from spawned thread {}", i);
+//         }
+//     }
+// }
+
+//mpsc channels
+
+use std::{
+    sync::mpsc,
+    thread::{self, spawn},
+};
 
 fn main() {
-    thread::spawn(|| {
-        let mut c = 0;
-        for i in 0..500000000 {
-            for j in 0..500000000 {
-                c = c + 1;
-                c = c - 1;
-                println!("ok from {}", i);
-            }
-        }
-    });
+    let (tx, rx) = mpsc::channel();
 
-    thread::spawn(|| {
-        let mut c = 0;
-        for i in 0..500000000 {
-            for j in 0..500000000 {
-                c = c + 1;
-                c = c - 1;
-                println!("hello from spawned thread {}", i);
+    for i in 0..10 {
+        let producer = tx.clone();
+        spawn(move || {
+            let mut sum: u64 = 0;
+            for j in i * 10000000..(i + 1 * 10000000) - 1 {
+                sum = sum + j;
             }
-        }
-    });
-
-    let mut c = 0;
-    for i in 0..500000000 {
-        for j in 0..500000000 {
-            c = c + 1;
-            c = c - 1;
-            println!("hi from spawned thread {}", i);
-        }
+            producer.send(sum).unwrap();
+        });
     }
+    drop(tx);
+
+    let mut final_sum: u64 = 0;
+    for val in rx {
+        println!("recv value from thread");
+        final_sum = final_sum + val;
+    }
+    println!("{}", final_sum);
 }
