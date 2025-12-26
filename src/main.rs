@@ -328,24 +328,60 @@
 
 //16 Lifetimes
 
+// fn main() {
+//     let ans;
+
+//     let str1 = String::from("small");
+//     {
+//         let str2 = String::from("longer");
+
+//         ans = longest(&str1, &str2);
+//     }
+
+//     println!("{}", ans);
+// }
+
+// fn longest<'a>(str1: &'a str, str2: &'a str) -> &'a str {
+//     if str1.len() > str2.len() {
+//         return str1;
+//     } else {
+//         return str2;
+//     }
+// }
+
+//17 Multithreading
+
+use std::thread;
+
 fn main() {
-    let ans;
+    thread::spawn(|| {
+        let mut c = 0;
+        for i in 0..500000000 {
+            for j in 0..500000000 {
+                c = c + 1;
+                c = c - 1;
+                println!("ok from {}", i);
+            }
+        }
+    });
 
-    let str1 = String::from("small");
-    {
-        let str2 = String::from("longer");
+    thread::spawn(|| {
+        let mut c = 0;
+        for i in 0..500000000 {
+            for j in 0..500000000 {
+                c = c + 1;
+                c = c - 1;
+                println!("hello from spawned thread {}", i);
+            }
+        }
+    });
 
-        ans = longest(&str1, &str2);
+    let mut c = 0;
+    for i in 0..500000000 {
+        for j in 0..500000000 {
+            c = c + 1;
+            c = c - 1;
+            println!("hi from spawned thread {}", i);
+        }
     }
-
-    println!("{}", ans);
 }
-
-fn longest<'a>(str1: &'a str, str2: &'a str) -> &'a str {
-    if str1.len() > str2.len() {
-        return str1;
-    } else {
-        return str2;
-    }
-}
-
