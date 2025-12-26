@@ -283,18 +283,45 @@
 
 //14 generics
 
-fn main() {
-    let bigger = largest(1, 2);
-    let bigger_char = largest('a', 'b');
+// fn main() {
+//     let bigger = largest(1, 2);
+//     let bigger_char = largest('a', 'b');
 
-    println!("{}", bigger);
-    println!("{}", bigger_char);
+//     println!("{}", bigger);
+//     println!("{}", bigger_char);
+// }
+
+// fn largest<T: std::cmp::PartialOrd>(a: T, b: T) -> T {
+//     if a > b {
+//         a
+//     } else {
+//         b
+//     }
+// }
+
+
+//15 Traits
+pub trait Summary {
+    fn summarize(&self) -> String;
 }
 
-fn largest<T: std::cmp::PartialOrd>(a: T, b: T) -> T {
-    if a > b {
-        a
-    } else {
-        b
+struct User {
+    name: String,
+    age: u32,
+}
+
+impl Summary for User {
+    fn summarize(&self) -> String {
+        return format!("The name of user is {} and age is {}", self.name, self.age);
     }
 }
+
+fn main() {
+    let user = User {
+        name: String::from("Dhruv"),
+        age: 20,
+    };
+
+    println!("{}", user.summarize());
+}
+
